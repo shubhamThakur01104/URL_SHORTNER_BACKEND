@@ -245,8 +245,6 @@ export const exportAnalyticsCSV = async (shortCode) => {
       .lean()
 
     if (!shortCodeDetails || shortCodeDetails.length === 0) {
-      console.log("Yeah this is working")
-
       throw new AppError('No analytics data found', StatusCodes.NOT_FOUND)
 
     }
