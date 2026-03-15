@@ -1,0 +1,42 @@
+
+services:
+  app-service:
+    build: .
+    container_name: url_shortner_backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - db_mongo
+      - db_redis
+    networks:
+      - app-network
+
+  db_mongo:
+    image: mongo:latest
+    restart: always
+    container_name: mongoDB-container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+  
+  db_redis:
+    image: redis:alpine
+    container_name: redis-container
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+  redis-data:
+
+networks:
+  app-network:
+    driver: bridge
