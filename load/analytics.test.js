@@ -13,7 +13,7 @@ export const options = {
 }
 
 export default function () {
-  const SHORT_CODE = '6mxGB' // Wo code jiske paas dher saara data ho
+  const SHORT_CODE = '4c94' // Wo code jiske paas dher saara data ho
   const URL = `http://localhost:5000/api/v1/analysis/${SHORT_CODE}`
 
   const res = http.get(URL)
